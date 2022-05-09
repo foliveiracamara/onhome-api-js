@@ -7,4 +7,4 @@ app.use(cors());
 app.use(express.json());
 app.listen(8080, () => console.log("Servidor iniciado"));
 
-// require('./src/Routes/index')(app);
+require('./src/routes')(app);
