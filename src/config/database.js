@@ -12,7 +12,6 @@ async function connect() {
     };
 
     // Organizar estrutura de envio
-
     const mysql = require("mysql2/promise");
     const sqls = require("mssql");
     const connection = await mysql.createConnection(`mysql://${process.env.DB_USER}:${process.env.DB_PASS}@localhost:3306/onhome`);
