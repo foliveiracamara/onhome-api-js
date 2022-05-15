@@ -17,10 +17,10 @@ async function connect() {
     const sqls = require("mssql");
     const connection = await mysql.createConnection(`mysql://${process.env.DB_USER}:${process.env.DB_PASS}@localhost:3306/onhome`);
     const connection2 = sqls.connect(config);
-    // global.connection = connection2;
-    global.connection = connection;
+    global.connection = connection2;
+    // global.connection = connection;
     console.log("Conexão com banco efetuada com sucesso");
-    return connection;
+    return connection2;
 }
 
 module.exports = { connect }

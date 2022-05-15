@@ -1,9 +1,15 @@
 const empresa = require("./empresa.model")
 const contatos = require("./contatos.model")
 const endereco = require("./endereco.model")
+const computador = require("./computador.model")
+const processo = require("./processo.model")
+const monitoramento = require("./monitoramento.model")
 
 module.exports = { 
     empresa, 
     contatos, 
-    endereco 
+    endereco,
+    computador,
+    processo,
+    monitoramento 
 }

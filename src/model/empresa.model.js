@@ -1,12 +1,22 @@
 const db = require("../config/database");
 
 async function inserirEmpresa(data) {
-    const values = [data.nomeFantasia, data.cnpj]
+    const { nomeFantasia, cnpj } = data
     const connection = await db.connect();
-    const sql = `INSERT INTO Empresa(
+    const sql = `INSERT INTO Empresa (
                     nomeFantasia,
-                    cnpj) VALUES (?, ?);`;
-    return connection.query(sql, values)
+                    cnpj) VALUES ('${nomeFantasia}', '${cnpj}');
+                    SELECT SCOPE_IDENTITY()`;
+    return connection.query(sql)
 }
 
-module.exports = { inserirEmpresa };
+async function selecionarEmpresa() {
+    const connection = await db.connect();
+    const sql = `SELECT * FROM Empresa 
+                    JOIN Contatos contato ON contato.fkEmpresa = idEmpresa
+                    JOIN Endereco endereco ON endereco.fkEmpresa = idEmpresa; 
+                `
+    return await connection.query(sql)
+}
+
+module.exports = { inserirEmpresa, selecionarEmpresa };
