@@ -20,13 +20,14 @@ async function run() {
         subject: 'Open lab',
         html: '<b>Bem vindo à OnHome Solutions!</b>',
         from: 'OnHome Digital Solutions <onhome.tech@gmail.com',
-        to: ['onhome.tech@gmail.com'] 
+        to: 'gabrielsouza628@gmail.com',
     })
-    console.log(mailSent)
+    console.log(mailSent) 
 }
 
 module.exports={
     run
+
 }
 
 

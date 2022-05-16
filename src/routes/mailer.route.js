@@ -1,5 +1,7 @@
-const nodemailerService = ('../services/nodemailer')
+const nodemailerService = require("../services/nodemailer")
 
 module.exports = async (app) => {
-    app.get('/mailer', (req, res) => await nodemailerService.run());
+    app.get('/mailer', (req, res) => {
+        nodemailerService.run();
+    });
 }
