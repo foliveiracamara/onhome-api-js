@@ -4,6 +4,7 @@ const endereco = require("./endereco.model")
 const computador = require("./computador.model")
 const processo = require("./processo.model")
 const monitoramento = require("./monitoramento.model")
+const licenca = require("./licenca.model")
 
 module.exports = { 
     empresa, 
@@ -11,5 +12,6 @@ module.exports = {
     endereco,
     computador,
     processo,
-    monitoramento 
+    monitoramento,
+    licenca 
 }

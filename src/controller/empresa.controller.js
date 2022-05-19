@@ -1,12 +1,17 @@
 const tb = require('../model');
+const licencaController = require('./licenca.controller');
 
 exports.inserirEmpresa = async (req, res) => {
     const data = req.body
-    const result = await tb.empresa.inserirEmpresa(data);
+    const fkLicenca = await licencaController.inserirLicenca(req, res);
+
+    const result = await tb.empresa.inserirEmpresa(data, fkLicenca);
     const [ recordObject ] = result.recordset
     const [ lastID ] = Object.values(recordObject)
+    
     tb.contatos.inserirContato(data, lastID)
     tb.endereco.inserirEndereco(data, lastID)
+
     res.status(201).send("Empresa cadastrada com sucesso")
 }
 
