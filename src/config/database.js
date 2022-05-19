@@ -21,11 +21,11 @@ async function connect() {
             console.log("Conexão com banco efetuada com sucesso");
             return connection2;
         } catch(err) {
-            throw new Error(`Erro: ${err}`)
+            console.log(`Erro: ${err}`)
+
+            
         }
     }
-
-    connection.end()
 }
 
 module.exports = { connect }
