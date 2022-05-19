@@ -11,12 +11,15 @@ async function connect() {
         database: 'onHome'
     };
 
-    // Organizar estrutura de envio
-    const sqls = require("mssql");
-    const connection2 = sqls.connect(config);
-    global.connection = connection2;
-    console.log("Conexão com banco efetuada com sucesso");
-    return connection2;
+    try {
+        const sqls = require("mssql");
+        const connection2 = sqls.connect(config);
+        global.connection = connection2;
+        console.log("Conexão com banco efetuada com sucesso");
+        return connection2;
+    } catch(err) {
+        throw new Error(`Erro: ${err}`)
+    }
 }
 
 module.exports = { connect }
