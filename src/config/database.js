@@ -20,6 +20,8 @@ async function connect() {
     } catch(err) {
         throw new Error(`Erro: ${err}`)
     }
+
+    connection.end()
 }
 
 module.exports = { connect }
