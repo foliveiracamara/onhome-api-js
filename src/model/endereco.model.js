@@ -1,7 +1,16 @@
 const db = require("../config/database");
 
 async function inserirEndereco(data, lastID) {
-    const values = [data.cep, data.logradouro, data.bairro, data.complemento, data.estado, data.cidade, lastID]
+    const {
+        cep,
+        logradouro,
+        numero,
+        bairro,
+        complemento,
+        estado,
+        cidade
+    } = data
+
     const connection = await db.connect();
     const sql = `INSERT INTO Endereco(
                     cep,
@@ -11,8 +20,18 @@ async function inserirEndereco(data, lastID) {
                     complemento,
                     estado,
                     cidade,
-                    fkEmpresa) VALUES (?, ?, ?, ?, ?, ?, ?, ?);`;
-    return connection.query(sql, values)
+                    fkEmpresa) 
+                        VALUES (
+                            '${cep}', 
+                            '${logradouro}', 
+                            '${numero}', 
+                            '${bairro}', 
+                            '${complemento}', 
+                            '${estado}', 
+                            '${cidade}', 
+                            ${lastID}
+                        );`;
+    return connection.query(sql)
 }
 
 module.exports = { inserirEndereco };

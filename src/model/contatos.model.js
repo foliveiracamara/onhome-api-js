@@ -1,13 +1,18 @@
 const db = require("../config/database");
 
 async function inserirContato(data, lastID) {
-    const values = [data.telefoneEmpresa, data.emailEmpresa, lastID]
+    const { telefoneEmpresa, emailEmpresa } = data
     const connection = await db.connect();
     const sql = `INSERT INTO Contatos(
                     telefoneEmpresa,
                     emailEmpresa,
-                    fkEmpresa) VALUES (?, ?, ?);`;
-    return connection.query(sql, values)
+                    fkEmpresa) 
+                        VALUES (
+                            '${telefoneEmpresa}', 
+                            '${emailEmpresa}', 
+                            ${lastID}
+                        );`;
+    return connection.query(sql)
 }
 
 module.exports = { inserirContato };
