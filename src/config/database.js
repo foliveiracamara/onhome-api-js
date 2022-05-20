@@ -1,5 +1,3 @@
-const { is } = require("express/lib/request");
-
 require("dotenv/config");
 
 async function connect() {
@@ -13,6 +11,13 @@ async function connect() {
         database: 'onHome'
     };
 
+    // Organizar estrutura de envio
+    const sqls = require("mssql");
+    const connection2 = sqls.connect(config);
+    global.connection = connection2;
+    console.log("Conexão com banco efetuada com sucesso");
+    return connection2;
+
     while (true) {
         try {
             const sqls = require("mssql");
@@ -21,9 +26,7 @@ async function connect() {
             console.log("Conexão com banco efetuada com sucesso");
             return connection2;
         } catch(err) {
-            console.log(`Erro: ${err}`)
-
-            
+            console.log(`Erro: ${err}`)       
         }
     }
 }
