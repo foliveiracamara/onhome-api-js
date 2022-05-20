@@ -22,7 +22,7 @@ async function run() {
         from: 'OnHome Digital Solutions <onhome.tech@gmail.com',
         to: ['onhome.tech@gmail.com'] 
     })
-    console.log(mailSent)
+    return mailSent 
 }
 
 module.exports={

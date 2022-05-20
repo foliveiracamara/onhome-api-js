@@ -1,5 +1,9 @@
-const nodemailerService = ('../services/nodemailer')
+const nodemailerService = require('../services/nodemailer')
 
 module.exports = async (app) => {
-    app.get('/mailer', (req, res) => await nodemailerService.run());
+    app.get('/mailer', async (req, res) => {
+        const result = JSON.stringify(await nodemailerService.run())
+        console.log(result)
+        res.status(200).send({result: `${result}`})
+    });
 }
