@@ -17,7 +17,6 @@ const transporter = nodemailer.createTransport({
 
 async function enviarEmail(data) {
   const { customerName, customerEmail } = data;
-  
     await transporter.sendMail({
     subject: "Open lab",
     html: `<body>
