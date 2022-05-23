@@ -5,4 +5,5 @@ module.exports = async (app) => {
         const result = JSON.stringify(await nodemailerService.run())
         res.status(200).send({result: `${result}`})
     });
+
 }
