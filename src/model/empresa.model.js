@@ -2,6 +2,7 @@ const db = require("../config/database");
 
 async function inserirEmpresa(data, fkLicenca) {
     const { nomeFantasia, cnpj, razaoSocial } = data
+    console.log(data)
     const connection = await db.connect();
     const sql = `INSERT INTO Empresa (
                     nomeFantasia,

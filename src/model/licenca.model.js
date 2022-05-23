@@ -1,7 +1,7 @@
 const db = require("../config/database");
 
 async function inserirLicenca(data) {
-    const { plano, periodo, qtdComputadores } = await data
+    const { plano, periodo, qtdComputadores } = data
 
     const connection = await db.connect();
     const sql = `INSERT INTO Licenca (
