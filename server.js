@@ -7,6 +7,5 @@ const PORT = process.env.PORT || 8080
 app.use(cors());
 app.use(express.json());
 app.listen(PORT, () => console.log("Servidor iniciado"));
-console.log(process.env.TZ)
 
 require('./src/routes')(app);

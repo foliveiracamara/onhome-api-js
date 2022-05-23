@@ -46,7 +46,7 @@ async function enviarEmail(data) {
     //     }
     // ]
   });
-}
+
 
 module.exports = {
   enviarEmail,
