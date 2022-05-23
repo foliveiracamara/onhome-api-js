@@ -4,6 +4,7 @@ const nodemailerRoutes = require('./mailer.route')
 const ComputadorRoute = require('./computador.route');
 const ProcessoRoute = require('./processo.route');
 const MonitoramentoRoute = require('./monitoramento.route');
+const UsuarioRoute = require('./usuario.route');
 
 module.exports = (app) => {
     EmpresaRoute(app);
@@ -12,4 +13,5 @@ module.exports = (app) => {
     ProcessoRoute(app);
     MonitoramentoRoute(app);
     nodemailerRoutes(app);
+    UsuarioRoute(app);
 }
