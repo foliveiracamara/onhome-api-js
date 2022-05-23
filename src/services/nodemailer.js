@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 
 async function enviarEmail(data) {
   const { customerName, customerEmail } = data;
-  console.log(customerEmail, customerName);
+  
     await transporter.sendMail({
     subject: "Open lab",
     html: `<body>
@@ -40,13 +40,9 @@ async function enviarEmail(data) {
         </div>
     </body>`,
     from: "OnHome Digital Solutions <onhome.tech@gmail.com",
-    to: `${customerEmail}`,
-    // attachments: [ {
-    //         filename: 'onhome.png', path: './img/onhome'
-    //     }
-    // ]
+    to: `${customerEmail}`
   });
-
+}
 
 module.exports = {
   enviarEmail,
