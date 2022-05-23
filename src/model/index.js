@@ -5,6 +5,7 @@ const computador = require("./computador.model")
 const processo = require("./processo.model")
 const monitoramento = require("./monitoramento.model")
 const licenca = require("./licenca.model")
+const usuario = require("./usuario.model")
 
 module.exports = { 
     empresa, 
@@ -13,5 +14,6 @@ module.exports = {
     computador,
     processo,
     monitoramento,
-    licenca 
+    licenca,
+    usuario 
 }
