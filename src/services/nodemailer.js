@@ -18,24 +18,37 @@ const transporter = nodemailer.createTransport({
 async function enviarEmail(data) {
   const { customerName, customerEmail } = data;
     await transporter.sendMail({
-    subject: "Open lab",
+    subject: "Boas-vindas!",
     html: `<body>
-        <header style="background-color: #7879F1; height: 50px;"></header>
-        <div 
-            style="background-color: #c1c1fa; 
-                   height: 200px; 
-                   display: flex;
-                   flex-direction: column;
-                   justify-content: center; 
-                   align-items: center;"
-            >
-        <h3>${customerName}<h3/>
-        <h3 style="font-size: 20px;">Obrigado por fazer o seu cadastro!</h3> 
-        <h3 style="font-size: 20px; display: inline-block">Estamos ansiosos para te-lo como parceiro de negócios!!</h3>
-        <h3 style="font-size: 20px;">Falta só mais um pouco, basta clicar <a href="">aqui!</a></h3>
-        </div>
-        <div style="background-color: #ffffff; height: 80px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-            <img src="./img/onhome.png"></span>
+    <div style="text-align: center">
+    <div>
+      <h1>Seja bem-vindo(a) à OnHome</h1>
+    </div>
+
+    <div style="color: #da00abbe">
+      <h3>Suas credenciais de acesso:</h3>
+    </div>
+    <p><b>Login:</b> fulaninho957</p>
+    <p><b>Senha:</b> paodebatata</p>
+    <br />
+    <h3>Olá ${customerName}, obrigado por preencher nosso formulário!</h3>
+    <p>
+      Para finalizar a aquisição de nossos serviços vamos precisar de algumas
+      informações durante o seu primeiro acesso. Pronto?
+    </p>
+    <button
+      style="
+        border: none;
+        background-color: rgb(82, 5, 170);
+        font-size: 18px;
+        color: white;
+        width: 150px;
+        height: 30px;
+        border-radius: 30px;
+      "
+    >
+      Vamos lá!
+    </button>
         </div>
     </body>`,
     from: "OnHome Digital Solutions <onhome.tech@gmail.com",
