@@ -3,7 +3,6 @@ const db = require("../config/database");
 async function selecionarProcessosPorUsuario(usuario) {
     const connection = await db.connect();
     const sql = `SELECT
-                    TOP 20
                     nomeUsuario,
                     nomeProcesso,
                     usoCpu,
