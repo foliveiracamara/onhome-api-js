@@ -17,11 +17,12 @@ const transporter = nodemailer.createTransport({
 
 async function enviarEmail(data) {
   const { customerName, customerEmail } = data;
-    await transporter.sendMail({
+  await transporter.sendMail({
     subject: "Boas-vindas!",
     html: `<body>
-    <div style="text-align: center">
-    <div>
+    <div style="text-align: center;">
+    <div style="background-color: 
+    rgb(61, 5, 126); color: white; height: 70px; display: flex; justify-content: center; align-items: center">
       <h1>Seja bem-vindo(a) à OnHome</h1>
     </div>
 
@@ -50,9 +51,12 @@ async function enviarEmail(data) {
       Vamos lá!
     </button>
         </div>
+        <div style="background-color: rgb(61, 5, 126); height: 70px; margin-top: 30px; color: white;
+        display: flex; align-items: center; justify-content: center;">
+        © OnHome 2022</div>
     </body>`,
     from: "OnHome Digital Solutions <onhome.tech@gmail.com",
-    to: `${customerEmail}`
+    to: `${customerEmail}`,
   });
 }
 
