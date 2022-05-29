@@ -12,7 +12,7 @@ exports.inserirEmpresa = async (req, res) => {
     tb.contatos.inserirContato(data, lastID)
     tb.endereco.inserirEndereco(data, lastID)
     // Pegar idUsuario - provavelmente no front
-    tb.usuario.atualizarUsuarioPorID(idUsuario, lastID)
+    // tb.usuario.atualizarUsuarioPorID(idUsuario, lastID)
 
     res.status(201).send("Empresa cadastrada com sucesso")
 }
