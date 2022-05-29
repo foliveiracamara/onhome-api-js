@@ -3,6 +3,7 @@ const tb = require('../model');
 exports.inserirUsuario = async (req, res) => {
     const data = req.body
 
+    // Extrair para uma função separada
     if (data.permission === "admin") {
         data.permission = 1
     } else {
@@ -20,8 +21,6 @@ exports.inserirUsuario = async (req, res) => {
     const result = await tb.usuario.inserirUsuario(data);
     const [ recordObject ] = result.recordset
     const [ lastID ] = Object.values(recordObject)
-    
-    // Inserir também na computador e processo usando o lastID
 
     res.status(201).send("Usuário cadastrado com sucesso")
 }

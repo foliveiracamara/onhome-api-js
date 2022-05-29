@@ -22,6 +22,21 @@ async function inserirUsuario(data) {
     return connection.query(sql)
 }
 
+async function inserirUsuarioPrimeiroAcesso(data, senhaGerada) {
+    const { customerName, customerEmail  } = data
+    const connection = await db.connect();
+    const sql = `INSERT INTO Usuario (
+                    nomeUsuario,
+                    emailUser,
+                    senhaUser
+                    ) VALUES (
+                        '${customerName}',
+                        '${customerEmail}',
+                        '${senhaGerada}'
+                    )`
+    return connection.query(sql);
+}
+
 async function selecinarUsuarioPorID(data) {
     
 }
@@ -38,9 +53,21 @@ async function selecionarUsuariosPorEmpresa(idEmpresa) {
                 FROM Usuario
                     JOIN Especialidade ON fkEspecialidade = idEspecialidade
                         JOIN Permissao ON fkPermissao = idPermissao
-                            WHERE fkEmpresa = ${idEmpresa}
-                `
+                            WHERE fkEmpresa = ${idEmpresa}`
     return connection.query(sql)
 }
 
-module.exports = { inserirUsuario, selecionarUsuariosPorEmpresa }
+async function atualizarUsuarioPorID(idUsuario, fkEmpresa) {
+    const connection = await db.connect();
+    const sql = `UPDATE Usuario 
+                    SET fkEmpresa = ${fkEmpresa} 
+                        WHERE idUsuario = ${idUsuario}`
+    return connection.query(sql)
+}
+
+module.exports = { 
+    inserirUsuario, 
+    selecionarUsuariosPorEmpresa,
+    atualizarUsuarioPorID,
+    inserirUsuarioPrimeiroAcesso 
+}
