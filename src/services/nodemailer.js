@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function enviarEmail(data) {
+async function enviarEmail(data, senhaGerada) {
   const { customerName, customerEmail } = data;
   await transporter.sendMail({
     subject: "Boas-vindas!",
@@ -29,8 +29,8 @@ async function enviarEmail(data) {
     <div style="color: #da00abbe">
       <h3>Suas credenciais de acesso:</h3>
     </div>
-    <p><b>Login:</b> fulaninho957</p>
-    <p><b>Senha:</b> paodebatata</p>
+    <p><b>Login:</b> ${customerEmail}</p>
+    <p><b>Senha:</b> ${senhaGerada}</p>
     <br />
     <h3>Olá ${customerName}, obrigado por preencher nosso formulário!</h3>
     <p>

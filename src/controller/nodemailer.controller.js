@@ -8,7 +8,7 @@ exports.enviarEmail = async (req, res) => {
 
     tb.usuario.inserirUsuarioPrimeiroAcesso(data, senhaGerada)
 
-    const result = await enviarEmail.enviarEmail(data)
+    const result = await enviarEmail.enviarEmail(data, senhaGerada)
 
     res.status(201).send({result})
 }
