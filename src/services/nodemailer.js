@@ -21,9 +21,8 @@ async function enviarEmail(data) {
     subject: "Boas-vindas!",
     html: `<body>
     <div style="text-align: center;">
-    <div style="background-color: 
-    rgb(61, 5, 126); color: white; height: 70px; display: flex; justify-content: center; align-items: center">
-      <h1>Seja bem-vindo(a) à OnHome</h1>
+    <div style="background-color: rgb(61, 5, 126); color: white; padding: 15px">
+      <h1 style="text-align: center;">Seja bem-vindo(a) à OnHome</h1>
     </div>
 
     <div style="color: #da00abbe">
@@ -51,8 +50,7 @@ async function enviarEmail(data) {
       Vamos lá!
     </button>
         </div>
-        <div style="background-color: rgb(61, 5, 126); height: 70px; margin-top: 30px; color: white;
-        display: flex; align-items: center; justify-content: center;">
+        <div style="background-color: rgb(61, 5, 126); padding: 30px; margin-top: 30px; color: white; text-align: center">
         © OnHome 2022</div>
     </body>`,
     from: "OnHome Digital Solutions <onhome.tech@gmail.com",
