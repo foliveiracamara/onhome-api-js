@@ -1,5 +1,4 @@
 const processoController = require("../controller/processo.controller");
-const authenticatedRoute = require("../middleware/auth");
 
 // Adicionar autenticação
 

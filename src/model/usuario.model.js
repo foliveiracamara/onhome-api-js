@@ -41,6 +41,17 @@ async function selecinarUsuarioPorID(data) {
     
 }
 
+async function selecionarUsuarioPorEmail(email, senha) {
+    const connection = await db.connect();
+    const sql = `SELECT
+                    idUsuario, 
+                    emailUser,
+                    senhaUser
+                FROM Usuario
+                    WHERE emailUser = '${email}' AND senhaUser = '${senha}'`
+    return connection.query(sql)
+}
+
 async function selecionarUsuariosPorEmpresa(idEmpresa) {
     const connection = await db.connect();
     const sql = `SELECT 
@@ -57,7 +68,8 @@ async function selecionarUsuariosPorEmpresa(idEmpresa) {
     return connection.query(sql)
 }
 
-async function atualizarUsuarioPorID(idUsuario, fkEmpresa) {
+async function atualizarUsuarioPorID(data, fkEmpresa) {
+    const { idUsuario } = data
     const connection = await db.connect();
     const sql = `UPDATE Usuario 
                     SET fkEmpresa = ${fkEmpresa} 
@@ -69,5 +81,6 @@ module.exports = {
     inserirUsuario, 
     selecionarUsuariosPorEmpresa,
     atualizarUsuarioPorID,
-    inserirUsuarioPrimeiroAcesso 
+    inserirUsuarioPrimeiroAcesso,
+    selecionarUsuarioPorEmail 
 }
