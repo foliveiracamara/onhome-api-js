@@ -5,6 +5,7 @@ const ComputadorRoute = require('./computador.route');
 const ProcessoRoute = require('./processo.route');
 const MonitoramentoRoute = require('./monitoramento.route');
 const UsuarioRoute = require('./usuario.route');
+const GamificacaoRoute = require('./gamificacao.route');
 
 module.exports = (app) => {
     EmpresaRoute(app);
@@ -14,4 +15,5 @@ module.exports = (app) => {
     MonitoramentoRoute(app);
     nodemailerRoutes(app);
     UsuarioRoute(app);
+    GamificacaoRoute(app);
 }
