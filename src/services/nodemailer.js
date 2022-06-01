@@ -15,6 +15,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// TODO: Trocar redirect do link para o site em prod
+
 async function enviarEmail(data, senhaGerada) {
   const { customerName, customerEmail } = data;
   await transporter.sendMail({
@@ -47,7 +49,15 @@ async function enviarEmail(data, senhaGerada) {
         border-radius: 30px;
       "
     >
-      Vamos lá!
+      <a
+        style="
+          text-decoration: none;
+          color: white;
+        " 
+        href="http://localhost:3000/login"
+      >
+        Vamos lá!
+      </a>
     </button>
         </div>
         <div style="background-color: rgb(61, 5, 126); padding: 30px; margin-top: 30px; color: white; text-align: center">
