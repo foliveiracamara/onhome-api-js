@@ -28,11 +28,13 @@ async function inserirUsuarioPrimeiroAcesso(data, senhaGerada) {
     const sql = `INSERT INTO Usuario (
                     nomeUsuario,
                     emailUser,
-                    senhaUser
+                    senhaUser,
+                    fkPermissao
                     ) VALUES (
                         '${customerName}',
                         '${customerEmail}',
-                        '${senhaGerada}'
+                        '${senhaGerada}',
+                        1
                     )`
     return connection.query(sql);
 }
@@ -46,7 +48,8 @@ async function selecionarUsuarioPorEmail(email, senha) {
     const sql = `SELECT
                     idUsuario, 
                     emailUser,
-                    senhaUser
+                    nomeUsuario,
+                    fkEmpresa
                 FROM Usuario
                     WHERE emailUser = '${email}' AND senhaUser = '${senha}'`
     return connection.query(sql)
