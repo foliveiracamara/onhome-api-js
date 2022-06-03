@@ -6,9 +6,9 @@ exports.inserirEmpresa = async (req, res) => {
     const fkLicenca = await licencaController.inserirLicenca(req, res);
 
     const result = await tb.empresa.inserirEmpresa(data, fkLicenca);
-    const [ recordObject ] = result.recordset
-    const [ lastID ] = Object.values(recordObject)
-    
+    const [recordObject] = result.recordset
+    const [lastID] = Object.values(recordObject)
+
     tb.contatos.inserirContato(data, lastID)
     tb.endereco.inserirEndereco(data, lastID)
     tb.usuario.atualizarUsuarioPorID(data, lastID)
@@ -17,6 +17,7 @@ exports.inserirEmpresa = async (req, res) => {
 }
 
 exports.selecionarEmpresa = async (req, res) => {
-    const informacoesEmpresa = await tb.empresa.selecionarEmpresa();
+    const idEmpresa = req.params.id
+    const informacoesEmpresa = await tb.empresa.selecionarEmpresaPorID(idEmpresa);
     res.status(200).json(informacoesEmpresa.recordset)
 }
