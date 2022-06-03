@@ -18,7 +18,7 @@ async function inserirEmpresa(data, fkLicenca) {
     return connection.query(sql)
 }
 
-async function selecionarEmpresa() {
+async function selecionarEmpresaPorID(idEmpresa) {
     const connection = await db.connect();
     const sql = `SELECT
                     nomeFantasia,
@@ -40,10 +40,11 @@ async function selecionarEmpresa() {
                 
                 FROM Empresa 
                     JOIN Contatos contato ON contato.fkEmpresa = idEmpresa
-                    JOIN Endereco endereco ON endereco.fkEmpresa = idEmpresa
-                    JOIN Licenca ON fkLicenca = idLicenca; 
+                        JOIN Endereco endereco ON endereco.fkEmpresa = idEmpresa
+                            JOIN Licenca ON fkLicenca = idLicenca
+                                WHERE idEmpresa = ${idEmpresa}; 
                 `
     return await connection.query(sql)
 }
 
-module.exports = { inserirEmpresa, selecionarEmpresa };
+module.exports = { inserirEmpresa, selecionarEmpresaPorID };
