@@ -16,20 +16,13 @@ async function selecionarComputadorPorUsuario(usuario) {
 async function selecionarComputadoresPorEmpresa(empresa) {
     const connection = await db.connect();
     const sql = `SELECT
-                    idUsuario, 
-                    nomeUsuario,
-                    emailUser,
-                    idComputador,
-                    hostName,
-                    sistemaOperacional,
-                    modeloProcessador,
-                    tamanhoDisco,
-                    tamanhoDiscoSecundario,
-                    tamanhoRam
-                FROM Empresa
-                    JOIN usuario ON fkEmpresa = idEmpresa
-                    JOIN Computadores ON fkUsuario = idUsuario
-                WHERE idEmpresa = ${empresa};`
+                    fkUsuario as idUsuario, 
+                    SUM(qtdPontos) AS qtdPontos
+                FROM Gamificacao
+                    JOIN Usuario ON fkUsuario = idUsuario
+                        JOIN Empresa ON fkEmpresa = idEmpresa
+                            WHERE idEmpresa = ${empresa}
+                                GROUP BY fkUsuario;`
     return await connection.query(sql)
 }
 
