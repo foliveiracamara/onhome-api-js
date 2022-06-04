@@ -39,8 +39,15 @@ async function inserirUsuarioPrimeiroAcesso(data, senhaGerada) {
     return connection.query(sql);
 }
 
-async function selecinarUsuarioPorID(data) {
-    
+async function selecinarNomesUsuariosPorEmpresa(idEmpresa) {
+    const connection = await db.connect();
+    const sql = `SELECT
+                    idUsuario, 
+                    nomeUsuario
+                FROM Usuario
+                    JOIN Empresa ON fkEmpresa = idEmpresa
+                        WHERE idEmpresa = ${idEmpresa} AND idUsuario > 1` 
+    return connection.query(sql)
 }
 
 async function selecionarUsuarioPorEmail(email, senha) {
@@ -85,5 +92,6 @@ module.exports = {
     selecionarUsuariosPorEmpresa,
     atualizarUsuarioPorID,
     inserirUsuarioPrimeiroAcesso,
-    selecionarUsuarioPorEmail 
+    selecionarUsuarioPorEmail,
+    selecinarNomesUsuariosPorEmpresa 
 }

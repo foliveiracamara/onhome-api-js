@@ -14,6 +14,13 @@ exports.selecionarPontosUsuarios = async (req, res) => {
 }
 
 exports.pontuacaoSemanaAtualESemanaPassada = async (req, res) => {
-    const pontuacaoDeComparacao = await tb.gamificacao.pontuacaoSemanaAtualESemanaPassada()
-    res.status(200).json(pontuacaoDeComparacao.recordsets)
+    const idEmpresa = req.params.id
+    const pontuacaoPassada = await tb.gamificacao.pontuacaoSemanaPassadaPorEmpresa(idEmpresa)
+    const pontuacaoAtual = await tb.gamificacao.pontuacaoSemanaAtualPorEmpresa(idEmpresa)
+
+    const pontuacaoAgrupada = [...pontuacaoPassada.recordset, ...pontuacaoAtual.recordset]
+    console.log(pontuacaoAgrupada)
+
+
+    res.status(200).json(pontuacaoAgrupada)
 }
