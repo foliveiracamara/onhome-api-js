@@ -7,7 +7,7 @@ exports.selecionarComputadorPorUsuario = async (req, res) => {
 }
 
 exports.selecionarComputadoresPorEmpresa = async (req, res) => {
-    const empresa = req.params.empresa
+    const empresa = req.params.id
     const informacoesComputadorEmpresa = await tb.computador.selecionarComputadoresPorEmpresa(empresa);
     res.status(200).json(informacoesComputadorEmpresa.recordsets)
 }
