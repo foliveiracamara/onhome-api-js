@@ -19,12 +19,14 @@ async function selecionarProcessosPorUsuario(usuario) {
 async function selecionarTodosProcessos() {
   const connection = await db.connect();
   const sql = `SELECT
+                    TOP 10
                     nomeProcesso,
                     usoCpu,
                     usoMemoria,
                     dataCaptura
                 FROM Processo
-                    ORDER BY idProcesso DESC;`;
+                WHERE usoCpu > 1
+                    ORDER BY usoCpu DESC;` 
   return await connection.query(sql);
 }
 
