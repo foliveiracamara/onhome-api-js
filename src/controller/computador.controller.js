@@ -9,5 +9,23 @@ exports.selecionarComputadorPorUsuario = async (req, res) => {
 exports.selecionarComputadoresPorEmpresa = async (req, res) => {
     const empresa = req.params.id
     const informacoesComputadorEmpresa = await tb.computador.selecionarComputadoresPorEmpresa(empresa);
-    res.status(200).json(informacoesComputadorEmpresa.recordsets)
+    const nomesUsuario = await tb.usuario.selecinarNomesUsuariosPorEmpresa(empresa)
+
+    const listandoNomes = informacoesComputadorEmpresa.recordset.map(usuario => {
+        const listaNome = []
+        nomesUsuario.recordset.map(usuario2 => {
+            if (usuario.idUsuario === usuario2.idUsuario) {
+                const { nomeUsuario } = usuario2
+                listaNome.push(nomeUsuario)
+            }
+        })
+        return listaNome
+    })
+
+    informacoesComputadorEmpresa.recordset.map((info, index) => {
+        const nomes = listandoNomes
+        return [info.nomeUsuario] = nomes[index]
+    })
+
+    res.status(200).json(informacoesComputadorEmpresa.recordset)
 }

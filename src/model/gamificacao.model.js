@@ -8,13 +8,33 @@ async function selecionarPontuacaoUsuarios(usuario) {
     return await connection.query(sql)
 }
 
-async function pontuacaoSemanaAtualESemanaPassada() {
+async function pontuacaoSemanaAtualPorEmpresa(idEmpresa) {
     const connection = await db.connect();
-    const sql = `SELECT SUM(qtdPontos) as atual
+    const sql = `SELECT SUM(qtdPontos) AS atual
                     FROM Gamificacao
-                    WHERE DATEDIFF(day, dataHoraCaptura, 
-                        GETDATE()) < 7;`
+                        JOIN Usuario ON fkUsuario = idUsuario
+                            JOIN Empresa ON fkEmpresa = idEmpresa
+                                WHERE idEmpresa = ${idEmpresa}
+                                    AND DATEDIFF(day, dataHoraCaptura, GETDATE()) < 7;`
     return await connection.query(sql)
 }
 
-module.exports = { selecionarPontuacaoUsuarios, pontuacaoSemanaAtualESemanaPassada }
+async function pontuacaoSemanaPassadaPorEmpresa(idEmpresa) {
+    const connection = await db.connect();
+    const sql = `SELECT SUM(qtdPontos) AS passada
+                    FROM Gamificacao
+                        JOIN Usuario ON fkUsuario = idUsuario
+                            JOIN Empresa ON fkEmpresa = idEmpresa
+                                WHERE idEmpresa = ${idEmpresa} 
+                                        AND
+                                    DATEDIFF(day, dataHoraCaptura, GETDATE()) >= 7
+                                        AND
+                                    DATEDIFF(day, dataHoraCaptura, GETDATE()) <= 14;`
+    return connection.query(sql)
+}
+
+module.exports = { 
+    selecionarPontuacaoUsuarios, 
+    pontuacaoSemanaAtualPorEmpresa, 
+    pontuacaoSemanaPassadaPorEmpresa 
+}
