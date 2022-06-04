@@ -8,4 +8,13 @@ async function selecionarPontuacaoUsuarios(usuario) {
     return await connection.query(sql)
 }
 
-module.exports = { selecionarPontuacaoUsuarios }
+async function pontuacaoSemanaAtualESemanaPassada() {
+    const connection = await db.connect();
+    const sql = `SELECT SUM(qtdPontos) as atual
+                    FROM Gamificacao
+                    WHERE DATEDIFF(day, dataHoraCaptura, 
+                        GETDATE()) < 7;`
+    return await connection.query(sql)
+}
+
+module.exports = { selecionarPontuacaoUsuarios, pontuacaoSemanaAtualESemanaPassada }

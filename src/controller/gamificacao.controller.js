@@ -12,3 +12,8 @@ exports.selecionarPontosUsuarios = async (req, res) => {
     ]
     res.status(200).json(agrupamento)
 }
+
+exports.pontuacaoSemanaAtualESemanaPassada = async (req, res) => {
+    const pontuacaoDeComparacao = await tb.gamificacao.pontuacaoSemanaAtualESemanaPassada()
+    res.status(200).json(pontuacaoDeComparacao.recordsets)
+}
