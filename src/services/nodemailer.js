@@ -54,7 +54,7 @@ async function enviarEmail(data, senhaGerada) {
           text-decoration: none;
           color: white;
         " 
-        href="http://localhost:3000/login"
+        href="https://delightful-sky-097d3610f.1.azurestaticapps.net/login"
       >
         Vamos lá!
       </a>
