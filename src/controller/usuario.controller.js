@@ -26,7 +26,6 @@ exports.inserirUsuario = async (req, res) => {
 
 exports.selecionarUsuariosPorEmpresa = async (req, res) => {
     const idEmpresa = req.params.idEmpresa
-
     const usuariosCadastrados = await tb.usuario.selecionarUsuariosPorEmpresa(idEmpresa);
     res.status(200).json(usuariosCadastrados.recordsets)
     
