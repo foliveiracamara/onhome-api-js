@@ -3,6 +3,7 @@ const db = require("../config/database");
 async function selecionarMonitoramentoPorUsuario(usuario) {
     const connection = await db.connect();
     const sql = `SELECT
+                    TOP 15
                     processadorLogico,
                     processadorFisico,
                     usandoCpu,

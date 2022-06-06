@@ -4,10 +4,9 @@ const agruparPontos = (listaPontos) => {
   const pontuacaoMedia = [];
   const pontuacaoAlta = [];
 
-  
   listaPontos.map((data) => {
     data.map((item) => {
-      const [valor] = Object.values(item);
+      const [_, valor] = Object.values(item);
       if (valor <= 25) {
         pontuacaoRuim.push(valor);
       } else if (valor <= 50) {

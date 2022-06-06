@@ -11,3 +11,9 @@ exports.selecionarTodosProcessos = async (req, res) => {
     res.status(200).json(informacoesProcessos.recordsets)
 }
 
+exports.selecionarProcessosPorEmpresa = async (req, res) => {
+    const idEmpresa = req.params.id
+    const mediaProcessos = await tb.processo.selecionarProcessosPorEmpresa(idEmpresa);
+    res.status(200).json(mediaProcessos.recordset)
+}
+
