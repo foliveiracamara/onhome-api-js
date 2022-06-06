@@ -21,7 +21,7 @@ async function inserirUsuario(data) {
                         '${area}'
                     );
                     SELECT SCOPE_IDENTITY()`;
-    return connection.query(sql)
+    return connection.query(sql);
 }
 
 async function inserirUsuarioPrimeiroAcesso(data, senhaGerada) {
