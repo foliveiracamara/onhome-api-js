@@ -2,7 +2,7 @@ const tb = require('../model');
 
 exports.inserirUsuario = async (req, res) => {
     const data = req.body
-
+    
     // Extrair para uma função separada
     if (data.permission === "admin") {
         data.permission = 1
