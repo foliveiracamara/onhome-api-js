@@ -3,18 +3,20 @@ const db = require("../config/database");
 // Adicionar fkEmpresa
 // Adicionar coluna cargo
 async function inserirUsuario(data) {
-    const { userName, userEmail, senha, permission, area } = data
+    const { userName, userEmail, senha, permission, area, fkEmpresa } = data
     const connection = await db.connect();
     const sql = `INSERT INTO Usuario (
                     nomeUsuario,
                     emailUser,
                     senhaUser,
+                    fkEmpresa,
                     fkPermissao,
                     fkEspecialidade
                     ) VALUES (
                         '${userName}', 
                         '${userEmail}', 
-                        '${senha}', 
+                        '${senha}',
+                        '${fkEmpresa}', 
                         '${permission}',
                         '${area}'
                     );
