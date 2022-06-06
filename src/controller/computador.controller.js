@@ -1,7 +1,7 @@
 const tb = require('../model');
 
 exports.selecionarComputadorPorUsuario = async (req, res) => {
-    const usuario = req.params.usuario
+    const usuario = req.params.id
     const informacoesComputador = await tb.computador.selecionarComputadorPorUsuario(usuario);
     res.status(200).json(informacoesComputador.recordsets)
 }

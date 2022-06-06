@@ -2,7 +2,8 @@ const tb = require('../model');
 const agruparPontos = require('../utils/agruparPontos');
 
 exports.selecionarPontosUsuarios = async (req, res) => {
-    const pontuacaoTotal = await tb.gamificacao.selecionarPontuacaoUsuarios()
+    const idEmpresa = req.params.id
+    const pontuacaoTotal = await tb.computador.selecionarComputadoresPorEmpresa(idEmpresa)
     const [ruim, baixa, media, alta] = agruparPontos(pontuacaoTotal.recordsets)
     const agrupamento = [
       { name: "0 a 25 pontos", value: ruim},
@@ -19,7 +20,6 @@ exports.pontuacaoSemanaAtualESemanaPassada = async (req, res) => {
     const pontuacaoAtual = await tb.gamificacao.pontuacaoSemanaAtualPorEmpresa(idEmpresa)
 
     const pontuacaoAgrupada = [...pontuacaoPassada.recordset, ...pontuacaoAtual.recordset]
-    console.log(pontuacaoAgrupada)
 
 
     res.status(200).json(pontuacaoAgrupada)
