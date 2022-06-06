@@ -49,7 +49,7 @@ async function selecinarNomesUsuariosPorEmpresa(idEmpresa) {
                 FROM Usuario
                     JOIN Empresa ON fkEmpresa = idEmpresa
                         WHERE idEmpresa = ${idEmpresa} AND idUsuario > 1` 
-    return connection.query(sql)
+    return connection.query(sql);
 }
 
 async function selecionarUsuarioPorEmail(email, senha) {
