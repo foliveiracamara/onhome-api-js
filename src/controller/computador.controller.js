@@ -27,5 +27,5 @@ exports.selecionarComputadoresPorEmpresa = async (req, res) => {
         return [info.nomeUsuario] = nomes[index]
     })
 
-    res.status(200).json(informacoesComputadorEmpresa.recordset)
+    res.status(200).json(informacoesComputadorEmpresa.recordset);
 }
